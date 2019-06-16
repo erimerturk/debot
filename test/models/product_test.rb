@@ -48,4 +48,11 @@ test "product attributes must not be empty" do
     assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
   end
 
+  test "product is not valid without a unique title length" do 
+    product = Product.new(title: "short",
+    description: "yyy", price: 1, image_url: "fred.gif")
+    assert product.invalid?
+    assert_equal [I18n.translate('errors.messages.too_short', :count=>10)], product.errors[:title]
+  end
+
 end
