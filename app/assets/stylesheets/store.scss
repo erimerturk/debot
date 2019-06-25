@@ -49,4 +49,22 @@
       }
   //
     }
+
+  // Place all the styles related to the LineItems controller here.
+  // They will automatically be included in application.css.
+  // You can use Sass (SCSS) here: http://sass-lang.com/
+
+  @keyframes product-highlight {
+    0% {
+      background: #8f8;
+    }
+    100% {
+      background: none;
+    }
+  }
+
+  .product-highlight {
+    animation: product-highlight 3s;
+  }
+
   }
