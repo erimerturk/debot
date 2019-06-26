@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @order.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @order.address %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @order.email %>
+</p>
+
+<p>
+  <strong>Pay type:</strong>
+  <%= @order.pay_type %>
+</p>
+
+<% @order.line_items.each do |item| %>
+  <% cache item.product do %>
+
+    <li>
+      <%= image_tag(item.product.image_url, style: "width:100px") %>
+      <h2><%= item.product.title %></h2>
+      <p><%= sanitize(item.product.description) %> </p>
+      <div class="price">
+        <%= number_to_currency(item.product.price) %>
+      </div>
+    </li>
+  <% end %>
+<% end %>
+
+  <%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
